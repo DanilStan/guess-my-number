@@ -1,5 +1,6 @@
 .header {
   display: flex;
+  height: 20px;
   justify-content: space-between;
   align-items: center;
 
@@ -31,5 +32,9 @@
     background-color: #979797;
     border-bottom-color: #ffc43b;
     scale: 1.05;
+  }
+
+  &:active {
+    border-bottom: none;
   }
 }
