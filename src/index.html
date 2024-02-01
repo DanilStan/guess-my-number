@@ -25,7 +25,12 @@
       <section class="left">
         <p class="left__start">Start guessing...</p>
         <div class="left__container">
-          <input class="left__input" type="number" class="guess" />
+          <input
+            class="left__input"
+            type="number"
+            class="guess"
+            pattern="[0-9]{10}"
+          />
           <button type="submit" class="left__btn">Check!</button>
         </div>
         <p class="label-score">💯 Score: <span class="score">20</span></p>
