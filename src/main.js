@@ -10,20 +10,28 @@ const refs = {
 };
 let scoreCurrentValue = 20;
 let highScoreCurrentValue = 0;
-let randomNumber = 1;
+let randomNumber = getRandomNumber();
 refs.inputRef.value = 1;
 refs.inputRef.addEventListener('keyup', onInputChange);
 refs.btnCheck.addEventListener('click', onCheckClick);
 
-function onInputChange() {
-  this.value = this.value.replace(/[^0-9]/g, '');
-}
-
 function onCheckClick() {
   validateInput();
-  getRandomNumber();
-  console.log(refs.inputRef.value);
+  scoreCurrentValue -= 1;
+  refs.scoreValue.textContent = scoreCurrentValue;
+  refs.scoreValue.value = scoreCurrentValue;
+  numberIsGuessed(scoreCurrentValue);
+}
+
+function numberIsGuessed(number) {
   console.log(randomNumber);
+  console.log(refs.inputRef.value);
+  if (randomNumber === Number(refs.inputRef.value)) {
+    refs.highScoreValue.textContent = number;
+    document.body.style.backgroundColor = '#4cfc49';
+    refs.btnCheck.disabled = true;
+    refs.btnCheck.classList.add('no-animation');
+  }
 }
 
 function validateInput() {
@@ -43,5 +51,9 @@ function validateInput() {
 }
 
 function getRandomNumber() {
-  randomNumber = Math.trunc(Math.random() * 20) + 1;
+  return Math.trunc(Math.random() * 20) + 1;
+}
+
+function onInputChange() {
+  this.value = this.value.replace(/[^0-9]/g, '');
 }
