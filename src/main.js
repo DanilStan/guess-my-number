@@ -27,6 +27,7 @@ function onCheckClick() {
 
 function onClickAgain() {
   resetInterface();
+  randomNumber = getRandomNumber();
 }
 
 function resetInterface() {
@@ -42,7 +43,10 @@ function numberIsGuessed(number) {
   console.log(randomNumber);
   console.log(refs.inputRef.value);
   if (randomNumber === Number(refs.inputRef.value)) {
-    refs.highScoreValue.textContent = number;
+    if (highScoreCurrentValue < number) {
+      refs.highScoreValue.textContent = number;
+    }
+    highScoreCurrentValue = number;
     document.body.style.backgroundColor = '#4cfc49';
     refs.btnCheck.disabled = true;
     refs.btnCheck.classList.add('no-animation');
