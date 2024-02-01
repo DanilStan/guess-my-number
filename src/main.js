@@ -37,11 +37,10 @@ function resetInterface() {
   document.body.style.backgroundColor = '#fff';
   refs.btnCheck.classList.remove('no-animation');
   refs.btnCheck.disabled = false;
+  refs.infoText.textContent = 'Guess My Number!';
 }
 
 function numberIsGuessed(number) {
-  console.log(randomNumber);
-  console.log(refs.inputRef.value);
   if (randomNumber === Number(refs.inputRef.value)) {
     if (highScoreCurrentValue < number) {
       refs.highScoreValue.textContent = number;
@@ -50,10 +49,25 @@ function numberIsGuessed(number) {
     document.body.style.backgroundColor = '#4cfc49';
     refs.btnCheck.classList.add('no-animation');
     refs.btnCheck.disabled = true;
+    refs.infoText.textContent = 'YOU WIN!!! 🎉🎉🎉';
+  }
+
+  if (randomNumber < Number(refs.inputRef.value)) {
+    refs.infoText.textContent = 'To High!';
+  }
+
+  if (randomNumber > Number(refs.inputRef.value)) {
+    refs.infoText.textContent = 'To Low!';
   }
 }
 
 function validateInput() {
+  if (scoreCurrentValue <= 1) {
+    refs.btnCheck.classList.add('no-animation');
+    refs.btnCheck.disabled = true;
+    Report.failure('Ops...', 'Play again', 'Okay');
+  }
+
   if (!refs.inputRef.value) {
     Report.failure('Ops...', 'Please enter a number', 'Okay');
   }
