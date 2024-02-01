@@ -48,8 +48,8 @@ function numberIsGuessed(number) {
     }
     highScoreCurrentValue = number;
     document.body.style.backgroundColor = '#4cfc49';
-    refs.btnCheck.disabled = true;
     refs.btnCheck.classList.add('no-animation');
+    refs.btnCheck.disabled = true;
   }
 }
 
