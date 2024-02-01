@@ -11,9 +11,11 @@ const refs = {
 let scoreCurrentValue = 20;
 let highScoreCurrentValue = 0;
 let randomNumber = getRandomNumber();
+
 refs.inputRef.value = 1;
 refs.inputRef.addEventListener('keyup', onInputChange);
 refs.btnCheck.addEventListener('click', onCheckClick);
+refs.btnAgain.addEventListener('click', onClickAgain);
 
 function onCheckClick() {
   validateInput();
@@ -21,6 +23,19 @@ function onCheckClick() {
   refs.scoreValue.textContent = scoreCurrentValue;
   refs.scoreValue.value = scoreCurrentValue;
   numberIsGuessed(scoreCurrentValue);
+}
+
+function onClickAgain() {
+  resetInterface();
+}
+
+function resetInterface() {
+  refs.inputRef.value = 1;
+  scoreCurrentValue = 20;
+  refs.scoreValue.textContent = 20;
+  document.body.style.backgroundColor = '#fff';
+  refs.btnCheck.classList.remove('no-animation');
+  refs.btnCheck.disabled = false;
 }
 
 function numberIsGuessed(number) {
